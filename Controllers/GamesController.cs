@@ -1,67 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using GamesCatalogApi.Data;
 using GamesCatalogApi.Models;
+using GamesCatalogApi.Services;
+
 namespace GamesCatalogApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class GamesController
+    public class GamesController : ControllerBase // Herdar de ControllerBase
     {
-        private readonly GamesContext _context;
-        public GamesController(GamesContext context)
+        private readonly IGameService _gameService;
+
+        public GamesController(IGameService gameService) // O construtor deve aceitar GameService
         {
-            _context = context;
+            _gameService = gameService;
         }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Game>>> Get()
         {
-            return await _context.Games.ToListAsync();
+            return Ok(await _gameService.GetAllGamesAsync()); // Envolver o resultado em Ok()
         }
-        [HttpGet("{id}")]
+
+        [HttpGet("{id}", Name = "GetGame")]
         public async Task<ActionResult<Game>> GetById(int id)
         {
-            var game = await _context.Games.FindAsync(id);
+            var game = await _gameService.GetGameByIdAsync(id);
             if (game == null)
             {
-                return new NotFoundResult();
+                return NotFound(); // Usar método NotFound()
             }
             return game;
         }
+
         [HttpPost]
         public async Task<ActionResult<Game>> Post([FromBody] Game game)
         {
-            _context.Games.Add(game);
-            await _context.SaveChangesAsync();
-            return new CreatedAtRouteResult("GetGame", new { id = game.Id }, game);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await _gameService.AddGameAsync(game);
+            return CreatedAtRoute("GetGame", new { id = game.Id }, game); // Usar método CreatedAtRoute()
         }
+
         [HttpPut("{id}")]
-        public async Task<ActionResult<Game>> Put(int id, [FromBody] Game game)
+        public async Task<IActionResult> Put(int id, [FromBody] Game game)
         {
             if (id != game.Id)
             {
-                return new BadRequestResult();
+                return BadRequest(); // Usar método BadRequest()
             }
-            _context.Entry(game).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return new NoContentResult();
+            await _gameService.UpdateGameAsync(game); // Presumindo que existe um método UpdateGameAsync
+            return NoContent(); // Usar método NoContent()
         }
+
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Game>> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var game = await _context.Games.FindAsync(id);
-            if (game == null)
+            var game = await _gameService.GetGameByIdAsync(id);
+            if (
+game == null)
             {
-                return new NotFoundResult();
+                return NotFound(); // Usar método NotFound()
             }
-            _context.Games.Remove(game);
-            await _context.SaveChangesAsync();
-            return new NoContentResult();
+            await _gameService.DeleteGameAsync(id); // Presumindo que existe um método DeleteGameAsync
+            return NoContent(); // Usar método NoContent()
         }
     }
 }
