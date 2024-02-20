@@ -38,7 +38,7 @@ Este projeto implementa uma API REST para um catálogo de jogos, criada com o ob
 2. Abra a solução no Visual Studio ou VS Code.
 3. Restaure os pacotes NuGet.
 4. No arquivo appsettings.json, coloque as informacoes de conexao do seu banco de dados PostgreSQL.
-5. Inicie o projeto com `dotnet run` ou utilizando o recurso de execução do Visual Studio.
+5. Inicie o projeto com `dotnet run`, utilizando o recurso de execução do Visual Studio ou com o comando `docker-compose up`.
 
 ## Uso
 
