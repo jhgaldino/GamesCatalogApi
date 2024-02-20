@@ -9,6 +9,7 @@ Este projeto implementa uma API REST para um catálogo de jogos, criada com o ob
 - ASP.NET Core 5.0/6.0
 - Entity Framework Core
 - PostgreSQL
+- Docker
 - Swagger para documentação da API
 
 ## Funcionalidades
