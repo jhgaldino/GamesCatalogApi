@@ -30,10 +30,10 @@ Este projeto implementa uma API RESTful para um catálogo de jogos. Foi desenvol
 
 ### Configurando o Banco de Dados
 
-1.Instale o PostgreSQL ou use o Docker para criar uma instância do PostgreSQL.
-2.Crie um banco de dados chamado gamescatalog.
-3.Utilize o `docker-compose.yml` para configurar e executar o banco de dados automaticamente.
-4.Aplique as migrações usando o comando dotnet ef database update para criar as tabelas necessárias no banco de dados.
+1. Instale o PostgreSQL ou use o Docker para criar uma instância do PostgreSQL.<br>
+2. Crie um banco de dados chamado gamescatalog.<br>
+3. Utilize o `docker-compose.yml` para configurar e executar o banco de dados automaticamente.<br>
+4. Aplique as migrações usando o comando dotnet ef database update para criar as tabelas necessárias no banco de dados.
 
 ### Executando o Projeto
 
