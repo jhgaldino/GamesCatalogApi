@@ -1,8 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+using FluentValidation;
 using GamesCatalogApi.Data;
+using GamesCatalogApi.Models;
 using GamesCatalogApi.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,8 @@ builder.Services.AddScoped<IGameService, GameService>(); // Adicione esta linha
 builder.Services.AddScoped<GameService>(); // Mova esta linha para aqui
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Adiciona todos os validadores do assemblu
+builder.Services.AddValidatorsFromAssemblies(new[] { typeof(Game).Assembly });
 
 var app = builder.Build();
 
