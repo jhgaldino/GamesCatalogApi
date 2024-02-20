@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 /GamesCatalogApi - Backup (1).csproj
 /GamesCatalogApi - Backup.csproj
+/appsettings.json
