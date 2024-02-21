@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using GamesCatalogApi.Data;
 using GamesCatalogApi.Services;
+using GamesCatalogApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GamesCatalogApi.Models;
 using GamesCatalogApi.Services;
+using GamesCatalogApi.Dtos;
 
 namespace GamesCatalogApi.Controllers
 {
@@ -42,7 +43,7 @@ namespace GamesCatalogApi.Controllers
                 return BadRequest(ModelState);
             }
             await _gameService.AddGameAsync(game);
-            return CreatedAtRoute("GetGame", new { id = game.Id }, game); // Usar método CreatedAtRoute()
+            return CreatedAtRoute("GetGame", new { id = game.Id }, game); 
         }
 
         [HttpPut("{id}")]
@@ -50,10 +51,10 @@ namespace GamesCatalogApi.Controllers
         {
             if (id != game.Id)
             {
-                return BadRequest(); // Usar método BadRequest()
+                return BadRequest(); 
             }
-            await _gameService.UpdateGameAsync(game); // Presumindo que existe um método UpdateGameAsync
-            return NoContent(); // Usar método NoContent()
+            await _gameService.UpdateGameAsync(game); 
+            return NoContent(); 
         }
 
         [HttpDelete("{id}")]
@@ -63,10 +64,10 @@ namespace GamesCatalogApi.Controllers
             if (
 game == null)
             {
-                return NotFound(); // Usar método NotFound()
+                return NotFound(); 
             }
-            await _gameService.DeleteGameAsync(id); // Presumindo que existe um método DeleteGameAsync
-            return NoContent(); // Usar método NoContent()
+            await _gameService.DeleteGameAsync(id); 
+            return NoContent(); 
         }
     }
 }
