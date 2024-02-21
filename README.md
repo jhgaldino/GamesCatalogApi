@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto implementa uma API REST para um catálogo de jogos, criada com o objetivo de aprender e aplicar os conceitos de APIs REST, operações CRUD e o uso do banco de dados PostgreSQL. A API permite que usuários gerenciem informações de jogos, incluindo operações para criar, ler, atualizar e deletar registros.
+Este projeto implementa uma API RESTful para um catálogo de jogos. Foi desenvolvido com o intuito de aplicar conceitos práticos de construção de APIs REST, realização de operações CRUD e interação com banco de dados PostgreSQL, encapsulando a lógica de negócios e persistência de dados.
 
 ## Tecnologias Utilizadas
 
@@ -30,16 +30,18 @@ Este projeto implementa uma API REST para um catálogo de jogos, criada com o ob
 
 ### Configurando o Banco de Dados
 
-1. Instale o PostgreSQL e crie um banco de dados chamado `gamescatalog`.
-2. Execute o comando `dotnet ef database update` para aplicar as migrações e criar as tabelas necessárias.
+1. Instale o PostgreSQL ou use o Docker para criar uma instância do PostgreSQL.<br>
+2. Crie um banco de dados chamado gamescatalog.<br>
+3. Utilize o `docker-compose.yml` para configurar e executar o banco de dados automaticamente.<br>
+4. Aplique as migrações usando o comando dotnet ef database update para criar as tabelas necessárias no banco de dados.
 
 ### Executando o Projeto
 
 1. Clone o repositório para a sua máquina local.
 2. Abra a solução no Visual Studio ou VS Code.
-3. Restaure os pacotes NuGet.
-4. No arquivo appsettings.json, coloque as informacoes de conexao do seu banco de dados PostgreSQL.
-5. Inicie o projeto com `dotnet run`, utilizando o recurso de execução do Visual Studio ou com o comando `docker-compose up`.
+3. Restaure os pacotes NuGet com o comando `dotnet restore`.
+4. Configure sua string de conexão no appsettings.json ou configure as variáveis de ambiente para a string de conexão caso esteja usando Docker.
+5. Inicie a aplicação com o comando `dotnet run` ou utilize o Docker Compose com `docker-compose up` para rodar a aplicação em um contêiner
 
 ## Uso
 

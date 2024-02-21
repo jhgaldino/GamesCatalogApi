@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using GamesCatalogApi.Models;
-using GamesCatalogApi.Services;
-using GamesCatalogApi.Dtos;
+using GamesCatalogApi.src.Models;
+using GamesCatalogApi.src.Services;
+using GamesCatalogApi.src.Dtos;
 
-namespace GamesCatalogApi.Controllers
+namespace GamesCatalogApi.src.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -43,31 +43,36 @@ namespace GamesCatalogApi.Controllers
                 return BadRequest(ModelState);
             }
             await _gameService.AddGameAsync(game);
-            return CreatedAtRoute("GetGame", new { id = game.Id }, game); 
+            return CreatedAtRoute("GetGame", new { id = game.Id }, game);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Game game)
+        public async Task<IActionResult> Put(int id, [FromBody] GameUpdateRequestDto gameDto)
         {
-            if (id != game.Id)
+            var game = await _gameService.GetGameByIdAsync(id);
+            if (game == null)
             {
-                return BadRequest(); 
+                return NotFound();
             }
-            await _gameService.UpdateGameAsync(game); 
-            return NoContent(); 
+            game.Title = gameDto.Title;
+            game.Genre = gameDto.Genre;
+            game.Developer = gameDto.Developer;
+            game.Publisher = gameDto.Publisher;
+
+            await _gameService.UpdateGameAsync(game);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var game = await _gameService.GetGameByIdAsync(id);
-            if (
-game == null)
+            if (game == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
-            await _gameService.DeleteGameAsync(id); 
-            return NoContent(); 
+            await _gameService.DeleteGameAsync(id);
+            return NoContent();
         }
     }
 }

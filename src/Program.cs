@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using GamesCatalogApi.Data;
-using GamesCatalogApi.Services;
 using GamesCatalogApi.Models;
+using GamesCatalogApi.src.Services;
+using GamesCatalogApi.src.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

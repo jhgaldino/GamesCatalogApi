@@ -1,7 +1,7 @@
-﻿using GamesCatalogApi.Models;
+﻿using GamesCatalogApi.src.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace GamesCatalogApi.Data
+namespace GamesCatalogApi.src.Data
 {
     public class GamesContext : DbContext
     {

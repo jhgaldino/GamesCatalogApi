@@ -1,6 +1,6 @@
-﻿namespace GamesCatalogApi.Dtos
+﻿namespace GamesCatalogApi.src.Dtos
 {
-    public class GameCreationResponseDto
+    public class GameCreateResponseDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

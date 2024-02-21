@@ -1,9 +1,9 @@
-﻿using GamesCatalogApi.Data;
-using GamesCatalogApi.Models;
+﻿using GamesCatalogApi.src.Data;
+using GamesCatalogApi.src.Models;
 using Microsoft.EntityFrameworkCore;
 
-    namespace GamesCatalogApi.Services
-    {
+namespace GamesCatalogApi.src.Services
+{
     public class GameService : IGameService
     {
         private readonly GamesContext _context;

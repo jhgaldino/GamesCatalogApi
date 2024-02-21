@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <None Include="GamesCatalogApi.csproj" />
-    <None Include="GamesCatalogApi - Cópia.csproj.user" />
+
   </ItemGroup>
 
   <ItemGroup>

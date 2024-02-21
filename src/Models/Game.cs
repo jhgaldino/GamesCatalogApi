@@ -1,4 +1,4 @@
-﻿namespace GamesCatalogApi.Models
+﻿namespace GamesCatalogApi.src.Models
 {
     public class Game
     {
@@ -7,6 +7,6 @@
         public string Genre { get; set; }
         public string Developer { get; set; }
         public string Publisher { get; set; }
-        
+
     }
 }
