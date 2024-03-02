@@ -11,8 +11,8 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["GamesCatalogApi.csproj", "."]
-RUN dotnet restore "./GamesCatalogApi.csproj"
+COPY ["GamesCatalogApi.csproj", "./"]
+RUN dotnet restore "GamesCatalogApi.csproj"
 COPY . .
 WORKDIR "/src/."
 RUN dotnet build "GamesCatalogApi.csproj" -c $BUILD_CONFIGURATION -o /app/build

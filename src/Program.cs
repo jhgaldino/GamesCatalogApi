@@ -1,7 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using GamesCatalogApi.Models;
 using GamesCatalogApi.src.Services;
 using GamesCatalogApi.src.Data;
 
